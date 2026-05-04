@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore Mars — the Red Planet. Surface features, atmosphere, moons, exploration history, and future missions." />
+  <meta property="og:title" content="Mars — The Red Planet | BigPlanetarium" />
+  <title>Mars — The Red Planet | BigPlanetarium</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪐</text></svg>" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <nav role="navigation" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo" aria-label="BigPlanetarium Home">
+      <span class="logo-icon" aria-hidden="true">🪐</span> BigPlanetarium
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="milkyway.html">Milky Way</a></li>
+      <li><a href="mars.html" class="active" aria-current="page">Mars</a></li>
+      <li><a href="solar-system.html">Solar System</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <main>
+    <!-- Hero with 3D Mars -->
+    <div class="planet-hero">
+      <div class="planet-hero-content">
+        <span class="tag gold">4th Planet from the Sun</span>
+        <h1>Mars<br /><span style="color:#e8734a">The Red Planet</span></h1>
+        <p>A cold, dusty desert world with towering volcanoes, vast canyons, and polar ice caps. Once rivers flowed here — could life have existed on Mars?</p>
+        <div class="hero-buttons" style="justify-content:flex-start">
+          <a href="#mars-facts" class="btn btn-primary">Explore Mars</a>
+          <a href="#mars-videos" class="btn btn-outline">Watch Videos</a>
+        </div>
+      </div>
+      <div class="planet-visual" role="img" aria-label="Animated 3D Mars planet rotating in space">
+        <div class="mars-wrapper">
+          <div class="planet-3d-mars">
+            <div class="mars-surface"></div>
+            <div class="mars-storm"></div>
+            <div class="mars-ice-north"></div>
+            <div class="mars-ice-south"></div>
+            <div class="mars-atmosphere"></div>
+            <div class="mars-highlight"></div>
+          </div>
+          <div class="mars-moon-orbit"><div class="mars-moon"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <section id="mars-facts" aria-labelledby="mars-stats-title">
+      <h2 class="section-title sr-only" id="mars-stats-title">Mars Key Facts</h2>
+      <div class="stats-bar" role="list">
+        <div class="stat-item" role="listitem"><span class="stat-value">687</span><span class="stat-label">Earth Days/Year</span></div>
+        <div class="stat-item" role="listitem"><span class="stat-value">24h 37m</span><span class="stat-label">Day Length</span></div>
+        <div class="stat-item" role="listitem"><span class="stat-value">-63°C</span><span class="stat-label">Avg Temperature</span></div>
+        <div class="stat-item" role="listitem"><span class="stat-value">0.38g</span><span class="stat-label">Surface Gravity</span></div>
+        <div class="stat-item" role="listitem"><span class="stat-value">2</span><span class="stat-label">Moons</span></div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section aria-labelledby="features-title">
+      <span class="section-label">Landmarks</span>
+      <h2 class="section-title" id="features-title">Mars Record Breakers</h2>
+      <p class="section-subtitle">Mars holds several solar system records for extraordinary geological features.</p>
+      <div class="glow-bar" aria-hidden="true"></div>
+      <div class="facts-grid">
+        <div class="fact-card"><span class="fact-icon">🌋</span><h4>Olympus Mons</h4><strong>~21.9 km tall</strong><p>The tallest volcano in the solar system — nearly 3× the height of Mount Everest.</p></div>
+        <div class="fact-card"><span class="fact-icon">🏜️</span><h4>Valles Marineris</h4><strong>~4,000 km long</strong><p>The longest canyon in the solar system — as wide as the United States.</p></div>
+        <div class="fact-card"><span class="fact-icon">❄️</span><h4>Polar Ice Caps</h4><strong>Both poles</strong><p>Water ice and CO₂ (dry ice) caps that grow and shrink with the Martian seasons.</p></div>
+        <div class="fact-card"><span class="fact-icon">🌪️</span><h4>Dust Storms</h4><strong>Planet-wide</strong><p>Global dust storms can last for months, blanketing the entire planet in reddish haze.</p></div>
+        <div class="fact-card"><span class="fact-icon">🌍</span><h4>Size vs Earth</h4><strong>Half of Earth</strong><p>About half Earth's diameter, yet similar land area because Mars has no oceans.</p></div>
+        <div class="fact-card"><span class="fact-icon">🔴</span><h4>Why Red?</h4><strong>Iron Oxide</strong><p>Rust (iron oxide) coats the surface dust and rocks, giving Mars its iconic red colour.</p></div>
+      </div>
+    </section>
+
+    <!-- Tabbed Deep Dive -->
+    <section aria-labelledby="mars-detail-title">
+      <span class="section-label">Science</span>
+      <h2 class="section-title" id="mars-detail-title">Mars Deep Dive</h2>
+      <div class="glow-bar" aria-hidden="true"></div>
+      <div class="tabs" role="tablist" aria-label="Mars information tabs">
+        <div class="tab-buttons">
+          <button class="tab-btn active" data-tab="mars-physical" role="tab" aria-selected="true">Physical Data</button>
+          <button class="tab-btn" data-tab="mars-atmosphere" role="tab" aria-selected="false">Atmosphere</button>
+          <button class="tab-btn" data-tab="mars-moons" role="tab" aria-selected="false">Moons</button>
+          <button class="tab-btn" data-tab="mars-life" role="tab" aria-selected="false">Life Potential</button>
+        </div>
+
+        <div id="mars-physical" class="tab-panel active" role="tabpanel">
+          <div class="info-panel">
+            <div>
+              <h3>Physical Properties</h3>
+              <ul>
+                <li><span>Diameter</span><span>6,779 km</span></li>
+                <li><span>Mass</span><span>6.39 × 10²³ kg</span></li>
+                <li><span>Volume</span><span>15% of Earth</span></li>
+                <li><span>Gravity</span><span>3.72 m/s² (0.38g)</span></li>
+                <li><span>Escape Velocity</span><span>5.03 km/s</span></li>
+              </ul>
+            </div>
+            <div>
+              <h3>Orbital Data</h3>
+              <ul>
+                <li><span>Distance from Sun</span><span>227.9 million km avg</span></li>
+                <li><span>Orbital Period</span><span>686.97 Earth days</span></li>
+                <li><span>Day Length</span><span>24 h 37 min (sol)</span></li>
+                <li><span>Axial Tilt</span><span>25.19° (similar to Earth)</span></li>
+                <li><span>Orbital Eccentricity</span><span>0.0934</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div id="mars-atmosphere" class="tab-panel" role="tabpanel">
+          <div class="info-panel">
+            <div>
+              <h3>Atmospheric Composition</h3>
+              <ul>
+                <li><span>CO₂</span><span>95.3%</span></li>
+                <li><span>Nitrogen</span><span>2.6%</span></li>
+                <li><span>Argon</span><span>1.9%</span></li>
+                <li><span>Oxygen</span><span>0.16%</span></li>
+                <li><span>Water Vapour</span><span>0.03%</span></li>
+              </ul>
+            </div>
+            <div>
+              <h3>Conditions</h3>
+              <ul>
+                <li><span>Surface Pressure</span><span>~0.6% of Earth's</span></li>
+                <li><span>Min Temperature</span><span>−143°C (poles)</span></li>
+                <li><span>Max Temperature</span><span>+35°C (equator)</span></li>
+                <li><span>Wind Speed</span><span>Up to 100 km/h</span></li>
+                <li><span>UV Radiation</span><span>Very high (no ozone)</span></li>
+              </ul>
+            </div>
+          </div>
+          <p style="color:var(--text-muted);line-height:1.8">Mars has a very thin atmosphere — about 1% the pressure of Earth's — and is mostly carbon dioxide. With no ozone layer, the surface is bathed in high UV radiation. Temperature swings are extreme. Liquid water cannot exist at the surface due to the low atmospheric pressure.</p>
+        </div>
+
+        <div id="mars-moons" class="tab-panel" role="tabpanel">
+          <div class="info-panel">
+            <div>
+              <h3>Phobos</h3>
+              <ul>
+                <li><span>Diameter</span><span>22.2 km</span></li>
+                <li><span>Orbital Period</span><span>7.65 hours</span></li>
+                <li><span>Distance from Mars</span><span>9,376 km</span></li>
+                <li><span>Fate</span><span>Will crash in ~50M years</span></li>
+              </ul>
+            </div>
+            <div>
+              <h3>Deimos</h3>
+              <ul>
+                <li><span>Diameter</span><span>12.4 km</span></li>
+                <li><span>Orbital Period</span><span>30.3 hours</span></li>
+                <li><span>Distance from Mars</span><span>23,460 km</span></li>
+                <li><span>Fate</span><span>Slowly drifting away</span></li>
+              </ul>
+            </div>
+          </div>
+          <p style="color:var(--text-muted);line-height:1.8">Mars has two small, irregularly shaped moons discovered in 1877. They are thought to be captured asteroids. Phobos orbits so close it rises and sets three times a day; tidal forces will cause it to crash into Mars or break apart in ~50 million years.</p>
+        </div>
+
+        <div id="mars-life" class="tab-panel" role="tabpanel">
+          <div class="info-panel">
+            <div>
+              <h3>Evidence For Life</h3>
+              <ul>
+                <li><span>Ancient rivers</span><span>Dried riverbeds found</span></li>
+                <li><span>Subsurface water</span><span>Radar detected ice</span></li>
+                <li><span>Organic molecules</span><span>Detected by Curiosity</span></li>
+                <li><span>Methane bursts</span><span>Seasonal spikes detected</span></li>
+              </ul>
+            </div>
+            <div>
+              <h3>Challenges</h3>
+              <ul>
+                <li><span>Radiation</span><span>No magnetic field</span></li>
+                <li><span>Temperature</span><span>Extremely cold average</span></li>
+                <li><span>Atmosphere</span><span>Thin, mostly CO₂</span></li>
+                <li><span>Liquid water</span><span>Cannot exist at surface</span></li>
+              </ul>
+            </div>
+          </div>
+          <p style="color:var(--text-muted);line-height:1.8">Mars is considered one of the most promising candidates for extraterrestrial life. Billions of years ago it had liquid water; NASA's Curiosity rover detected organic molecules and seasonal methane spikes. Whether life ever existed — or survives today in protected niches — remains one of science's greatest open questions.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Videos -->
+    <div class="video-section" id="mars-videos" aria-labelledby="mars-vids-title">
+      <section>
+        <span class="section-label">Watch</span>
+        <h2 class="section-title" id="mars-vids-title">Mars Exploration Videos</h2>
+        <p class="section-subtitle">Watch footage and documentaries about Mars, its rovers, and future human missions.</p>
+        <div class="glow-bar" aria-hidden="true"></div>
+        <div class="videos-grid">
+          <article class="video-card">
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/D8pnmwOXhoY" title="Mars: The Red Planet Documentary"
+                allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture"
+                allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="video-info">
+              <h3>Mars: The Red Planet</h3>
+              <p>A comprehensive documentary on Mars — its geology, history, atmosphere, and the science of exploration.</p>
+            </div>
+          </article>
+          <article class="video-card">
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/4czjS9h4Fpg" title="NASA's Perseverance Rover on Mars"
+                allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture"
+                allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="video-info">
+              <h3>Perseverance Rover on Mars</h3>
+              <p>Follow NASA's Perseverance rover exploring Jezero Crater and searching for signs of ancient life.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <!-- MCQ Quiz — Mars edition -->
+    <section aria-labelledby="mars-quiz-title">
+      <span class="section-label">Test Yourself</span>
+      <h2 class="section-title" id="mars-quiz-title">Mars Knowledge Quiz</h2>
+      <p class="section-subtitle">How much do you know about the Red Planet? Answer below!</p>
+      <div class="glow-bar" aria-hidden="true"></div>
+      <div class="mcq-outer">
+        <div class="mcq-header"><span class="mcq-header-icon" aria-hidden="true">🔴</span></div>
+        <div class="mcq-wrapper" role="main" aria-label="Mars MCQ Quiz">
+          <div id="quiz" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Missions Timeline -->
+    <section aria-labelledby="missions-title">
+      <span class="section-label">History</span>
+      <h2 class="section-title" id="missions-title">Mars Missions Timeline</h2>
+      <div class="glow-bar" aria-hidden="true"></div>
+      <div class="timeline" role="list">
+        <div class="timeline-item" role="listitem"><span class="year">1965</span><h4>Mariner 4 — First Flyby</h4><p>First successful flyby of Mars, returning 21 photographs — the first close-up images of another planet.</p></div>
+        <div class="timeline-item" role="listitem"><span class="year">1976</span><h4>Viking Landers</h4><p>Viking 1 and 2 were the first spacecraft to land on Mars and conduct experiments to search for signs of life.</p></div>
+        <div class="timeline-item" role="listitem"><span class="year">1997</span><h4>Pathfinder &amp; Sojourner</h4><p>The first Mars rover, Sojourner, operated for 83 days and analysed rocks and soil on the surface.</p></div>
+        <div class="timeline-item" role="listitem"><span class="year">2004</span><h4>Spirit &amp; Opportunity</h4><p>Found strong evidence that liquid water once existed on Mars. Opportunity operated for over 14 years.</p></div>
+        <div class="timeline-item" role="listitem"><span class="year">2012</span><h4>Curiosity Rover</h4><p>Still active — detected organic molecules and confirmed ancient Mars was habitable.</p></div>
+        <div class="timeline-item" role="listitem"><span class="year">2021</span><h4>Perseverance &amp; Ingenuity</h4><p>Perseverance collects rock samples for return to Earth. Ingenuity became the first powered aircraft to fly on another planet.</p></div>
+        <div class="timeline-item" role="listitem"><span class="year">2030s</span><h4>First Human Mission (Planned)</h4><p>NASA and SpaceX plan crewed Mars missions — humanity's first steps on another planet.</p></div>
+      </div>
+    </section>
+
+    <!-- FAQ Accordion -->
+    <section aria-labelledby="faq-title">
+      <span class="section-label">FAQ</span>
+      <h2 class="section-title" id="faq-title">Mars FAQ</h2>
+      <div class="glow-bar" aria-hidden="true"></div>
+      <div class="accordion" role="list">
+        <div class="accordion-item" role="listitem">
+          <button class="accordion-header" aria-expanded="false">Could humans live on Mars? <span class="accordion-icon">+</span></button>
+          <div class="accordion-body"><div class="accordion-body-inner">Living on Mars would require pressurised habitats, oxygen generation, radiation shielding, and food production. The thin atmosphere, extreme cold, and high radiation make the surface inhospitable without advanced technology. However, Mars's day length (24h 37m) and axial tilt (25°) are similar to Earth's, making some aspects easier for adaptation.</div></div>
+        </div>
+        <div class="accordion-item" role="listitem">
+          <button class="accordion-header" aria-expanded="false">How long to travel to Mars? <span class="accordion-icon">+</span></button>
+          <div class="accordion-body"><div class="accordion-body-inner">A typical mission using Hohmann transfer orbits takes about 7–9 months. The distance varies from 56 million km to 401 million km depending on orbital positions. SpaceX's Starship aims to significantly reduce travel time with more powerful propulsion.</div></div>
+        </div>
+        <div class="accordion-item" role="listitem">
+          <button class="accordion-header" aria-expanded="false">Is there water on Mars? <span class="accordion-icon">+</span></button>
+          <div class="accordion-body"><div class="accordion-body-inner">Yes! Mars has significant water primarily as ice in its polar caps and in the subsurface. In 2018, scientists detected what appears to be a subsurface liquid water lake beneath the south polar ice cap using ground-penetrating radar. Surface water cannot exist stably due to the thin atmosphere.</div></div>
+        </div>
+        <div class="accordion-item" role="listitem">
+          <button class="accordion-header" aria-expanded="false">Why is Mars called the Red Planet? <span class="accordion-icon">+</span></button>
+          <div class="accordion-body"><div class="accordion-body-inner">Mars gets its reddish colour from iron oxide — essentially rust — that coats the surface rocks and dust. This colour is visible even to the naked eye, which is why ancient astronomers named it after the Roman god of war.</div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="footer-logo">🪐 BigPlanetarium</div>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="index.html">Home</a><a href="milkyway.html">Milky Way</a><a href="mars.html">Mars</a><a href="solar-system.html">Solar System</a>
+    </nav>
+    <div class="divider" aria-hidden="true"></div>
+    <p class="footer-copy">© 2026 BigPlanetarium — An Educational Space Science Platform.</p>
+  </footer>
+
+  <button class="scroll-top" aria-label="Scroll back to top">↑</button>
+  <script src="js/script.js"></script>
+</body>
+</html>

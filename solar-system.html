@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore our Solar System — the Sun, eight planets, dwarf planets, moons, and more. Compare planetary data and learn about each world." />
+  <meta property="og:title" content="Our Solar System | BigPlanetarium" />
+  <title>Our Solar System | BigPlanetarium</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪐</text></svg>" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Animated Solar System Orrery */
+    .orrery-container {
+      position: relative;
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .orrery {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .sun {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #fff5a0, #ffe040 30%, #ffa020 70%, #ff6000 100%);
+      box-shadow: 0 0 30px #ffdd00, 0 0 80px rgba(255,180,0,0.5);
+      z-index: 10;
+    }
+    .orbit {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .planet-orbit {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      animation: orbitAnim linear infinite;
+      transform-origin: center;
+    }
+    @keyframes orbitAnim {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+    .planet-dot {
+      position: absolute;
+      border-radius: 50%;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    /* Orrery sizes */
+    #orbit-mercury { width: 80px; height: 80px; }
+    #orbit-venus   { width: 120px; height: 120px; }
+    #orbit-earth   { width: 165px; height: 165px; }
+    #orbit-mars    { width: 210px; height: 210px; }
+    #orbit-jupiter { width: 280px; height: 280px; }
+    #orbit-saturn  { width: 350px; height: 350px; }
+    #orbit-uranus  { width: 415px; height: 415px; }
+    #orbit-neptune { width: 480px; height: 480px; }
+
+    #anim-mercury { width: 80px; height: 80px; animation-duration: 4s; }
+    #anim-venus   { width: 120px; height: 120px; animation-duration: 10s; }
+    #anim-earth   { width: 165px; height: 165px; animation-duration: 16s; }
+    #anim-mars    { width: 210px; height: 210px; animation-duration: 30s; }
+    #anim-jupiter { width: 280px; height: 280px; animation-duration: 190s; }
+    #anim-saturn  { width: 350px; height: 350px; animation-duration: 470s; }
+    #anim-uranus  { width: 415px; height: 415px; animation-duration: 1340s; }
+    #anim-neptune { width: 480px; height: 480px; animation-duration: 2630s; }
+
+    .dot-mercury { width: 5px; height: 5px; background: #b0b0b0; }
+    .dot-venus   { width: 8px; height: 8px; background: #e8c060; }
+    .dot-earth   { width: 8px; height: 8px; background: #4090e0; }
+    .dot-mars    { width: 6px; height: 6px; background: #d04020; }
+    .dot-jupiter { width: 16px; height: 16px; background: #d4a060; }
+    .dot-saturn  { width: 13px; height: 13px; background: #dfc080; box-shadow: 0 0 0 3px rgba(200,180,100,0.3), 0 0 0 6px rgba(200,180,100,0.1); }
+    .dot-uranus  { width: 10px; height: 10px; background: #80d8e0; }
+    .dot-neptune { width: 10px; height: 10px; background: #4060e0; }
+
+    /* Planet card grid */
+    .planet-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: transform 0.3s, border-color 0.3s;
+      cursor: default;
+    }
+    .planet-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255,255,255,0.2);
+    }
+    .planet-emoji {
+      font-size: 2.8rem;
+      line-height: 1;
+    }
+    .planet-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      color: var(--text-main);
+    }
+    .planet-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      flex: 1;
+    }
+    .planet-stat {
+      font-size: 0.8rem;
+      color: var(--accent-gold);
+      font-weight: 600;
+    }
+    .planets-grid-layout {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav role="navigation" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo" aria-label="BigPlanetarium Home">
+      <span aria-hidden="true">🪐</span> BigPlanetarium
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="milkyway.html">Milky Way</a></li>
+      <li><a href="mars.html">Mars</a></li>
+      <li><a href="solar-system.html" class="active" aria-current="page">Solar System</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <div class="hero" role="banner" style="min-height:70vh">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <span class="hero-badge" aria-label="Category: Our Cosmic Neighborhood">Our Cosmic Neighborhood</span>
+      <h1>Our <span class="highlight">Solar System</span></h1>
+      <p>Eight planets, hundreds of moons, millions of asteroids, and countless comets all orbiting one medium-sized star — our Sun. Explore the planets, compare their data, and discover the architecture of our cosmic home.</p>
+      <div class="hero-buttons">
+        <a href="#planets" class="btn btn-primary">Meet the Planets</a>
+        <a href="#orrery" class="btn btn-outline">View Orrery</a>
+      </div>
+    </div>
+
+    <!-- Solar System Stats -->
+    <section aria-labelledby="ss-stats-title">
+      <h2 class="section-title sr-only" id="ss-stats-title">Solar System Key Facts</h2>
+      <div class="stats-bar" role="list">
+        <div class="stat-item" role="listitem">
+          <span class="stat-value">8</span>
+          <span class="stat-label">Planets</span>
+        </div>
+        <div class="stat-item" role="listitem">
+          <span class="stat-value">200+</span>
+          <span class="stat-label">Known Moons</span>
+        </div>
+        <div class="stat-item" role="listitem">
+          <span class="stat-value">5</span>
+          <span class="stat-label">Dwarf Planets</span>
+        </div>
+        <div class="stat-item" role="listitem">
+          <span class="stat-value">4.6B</span>
+          <span class="stat-label">Years Old</span>
+        </div>
+        <div class="stat-item" role="listitem">
+          <span class="stat-value">99.86%</span>
+          <span class="stat-label">Mass = the Sun</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Animated Orrery -->
+    <section id="orrery" aria-labelledby="orrery-title">
+      <span class="section-label" aria-hidden="true">Interactive</span>
+      <h2 class="section-title" id="orrery-title">Solar System Orrery</h2>
+      <p class="section-subtitle">An animated model of our solar system showing the relative orbital paths of each planet (not to scale).</p>
+      <div class="glow-bar" aria-hidden="true"></div>
+      <div class="orrery-container" role="img" aria-label="Animated diagram of the solar system with planets orbiting the Sun">
+        <div class="orrery" aria-hidden="true">
+          <!-- Orbits -->
+          <div class="orbit" id="orbit-mercury"></div>
+          <div class="orbit" id="orbit-venus"></div>
+          <div class="orbit" id="orbit-earth"></div>
+          <div class="orbit" id="orbit-mars"></div>
+          <div class="orbit" id="orbit-jupiter"></div>
+          <div class="orbit" id="orbit-saturn"></div>
+          <div class="orbit" id="orbit-uranus"></div>
+          <div class="orbit" id="orbit-neptune"></div>
+          <!-- Sun -->
+          <div class="orrery-sun"></div>
+          <!-- Planet dots -->
+          <div class="planet-orbit" id="anim-mercury"><div class="planet-dot dot-mercury"></div></div>
+          <div class="planet-orbit" id="anim-venus"><div class="planet-dot dot-venus"></div></div>
+          <div class="planet-orbit" id="anim-earth"><div class="planet-dot dot-earth"></div></div>
+          <div class="planet-orbit" id="anim-mars"><div class="planet-dot dot-mars"></div></div>
+          <div class="planet-orbit" id="anim-jupiter"><div class="planet-dot dot-jupiter"></div></div>
+          <div class="planet-orbit" id="anim-saturn"><div class="planet-dot dot-saturn"></div></div>
+          <div class="planet-orbit" id="anim-uranus"><div class="planet-dot dot-uranus"></div></div>
+          <div class="planet-orbit" id="anim-neptune"><div class="planet-dot dot-neptune"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Planets Grid -->
+    <section id="planets" aria-labelledby="planets-title">
+      <span class="section-label" aria-hidden="true">The Planets</span>
+      <h2 class="section-title" id="planets-title">Meet the Eight Planets</h2>
+      <p class="section-subtitle">From the scorching rocky worlds of the inner solar system to the giant gas worlds of the outer reaches.</p>
+      <div class="glow-bar" aria-hidden="true"></div>
+      <div class="planets-grid-layout" role="list">
+        <article class="planet-card" role="listitem" aria-label="Mercury">
+          <span class="planet-emoji" aria-hidden="true">⚫</span>
+          <h3 class="planet-name">Mercury</h3>
+          <p class="planet-desc">The smallest planet and closest to the Sun. Extreme temperature swings from -180°C to 430°C with no atmosphere.</p>
+          <span class="planet-stat">88 Earth days per orbit</span>
+        </article>
+        <article class="planet-card" role="listitem" aria-label="Venus">
+          <span class="planet-emoji" aria-hidden="true">🌕</span>
+          <h3 class="planet-name">Venus</h3>
+          <p class="planet-desc">The hottest planet (462°C average) despite not being closest to the Sun. Thick CO₂ atmosphere with sulfuric acid clouds.</p>
+          <span class="planet-stat">225 Earth days per orbit</span>
+        </article>
+        <article class="planet-card" role="listitem" aria-label="Earth">
+          <span class="planet-emoji" aria-hidden="true">🌍</span>
+          <h3 class="planet-name">Earth</h3>
+          <p class="planet-desc">Our home — the only known planet with life. Protected by a magnetic field, liquid water covers 71% of its surface.</p>
+          <span class="planet-stat">365.25 Earth days per orbit</span>
+        </article>
+        <article class="planet-card" role="listitem" aria-label="Mars">
+          <span class="planet-emoji" aria-hidden="true">🔴</span>
+          <h3 class="planet-name">Mars</h3>
+          <p class="planet-desc">The Red Planet has the solar system's tallest volcano (Olympus Mons) and longest canyon (Valles Marineris).</p>
+          <span class="planet-stat">687 Earth days per orbit</span>
+        </article>
+        <article class="planet-card" role="listitem" aria-label="Jupiter">
+          <span class="planet-emoji" aria-hidden="true">🟠</span>
+          <h3 class="planet-name">Jupiter</h3>
+          <p class="planet-desc">The largest planet — over 1,300 Earths could fit inside. The Great Red Spot is a 400-year-old storm system.</p>
+          <span class="planet-stat">11.9 Earth years per orbit</span>
+        </article>
+        <article class="planet-card" role="listitem" aria-label="Saturn">
+          <span class="planet-emoji" aria-hidden="true">🪐</span>
+          <h3 class="planet-name">Saturn</h3>
+          <p class="planet-desc">Famous for its stunning ring system made of ice and rock. So light it could float on water.</p>
+          <span class="planet-stat">29.5 Earth years per orbit</span>
+        </article>
+        <article class="planet-card" role="listitem" aria-label="Uranus">
+          <span class="planet-emoji" aria-hidden="true">🔵</span>
+          <h3 class="planet-name">Uranus</h3>
+          <p class="planet-desc">Rotates on its side with an axial tilt of 98°. Its blue-green color comes from methane in its atmosphere.</p>
+          <span class="planet-stat">84 Earth years per orbit</span>
+        </article>
+        <article class="planet-card" role="listitem" aria-label="Neptune">
+          <span class="planet-emoji" aria-hidden="true">🌀</span>
+          <h3 class="planet-name">Neptune</h3>
+          <p class="planet-desc">The windiest planet with speeds up to 2,100 km/h. Takes 165 years to orbit the Sun once.</p>
+          <span class="planet-stat">165 Earth years per orbit</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- Planet Comparison Table -->
+    <section aria-labelledby="compare-title">
+      <span class="section-label" aria-hidden="true">Data</span>
+      <h2 class="section-title" id="compare-title">Planet Comparison</h2>
+      <p class="section-subtitle">Compare key physical and orbital data for all eight planets.</p>
+      <div class="glow-bar" aria-hidden="true"></div>
+      <div class="table-wrapper" role="region" aria-label="Planet comparison data table" tabindex="0">
+        <table class="compare-table" aria-describedby="compare-title">
+          <caption class="sr-only">Comparison table of solar system planets with their diameter, mass, moons, orbital period, and average temperature</caption>
+          <thead>
+            <tr>
+              <th scope="col">Planet</th>
+              <th scope="col">Diameter (km)</th>
+              <th scope="col">Mass (Earth = 1)</th>
+              <th scope="col">Moons</th>
+              <th scope="col">Orbital Period</th>
+              <th scope="col">Avg Temp (°C)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Mercury</strong></td>
+              <td>4,879</td>
+              <td>0.055</td>
+              <td>0</td>
+              <td>88 days</td>
+              <td>167</td>
+            </tr>
+            <tr>
+              <td><strong>Venus</strong></td>
+              <td>12,104</td>
+              <td>0.815</td>
+              <td>0</td>
+              <td>225 days</td>
+              <td>462</td>
+            </tr>
+            <tr>
+              <td><strong>Earth</strong></td>
+              <td>12,742</td>
+              <td>1.000</td>
+              <td>1</td>
+              <td>365 days</td>
+              <td>15</td>
+            </tr>
+            <tr>
+              <td><strong>Mars</strong></td>
+              <td>6,779</td>
+              <td>0.107</td>
+              <td>2</td>
+              <td>687 days</td>
+              <td>-63</td>
+            </tr>
+            <tr>
+              <td><strong>Jupiter</strong></td>
+              <td>139,820</td>
+              <td>317.8</td>
+              <td>95</td>
+              <td>11.9 years</td>
+              <td>-108</td>
+            </tr>
+            <tr>
+              <td><strong>Saturn</strong></td>
+              <td>116,460</td>
+              <td>95.2</td>
+              <td>146</td>
+              <td>29.5 years</td>
+              <td>-138</td>
+            </tr>
+            <tr>
+              <td><strong>Uranus</strong></td>
+              <td>50,724</td>
+              <td>14.5</td>
+              <td>28</td>
+              <td>84 years</td>
+              <td>-195</td>
+            </tr>
+            <tr>
+              <td><strong>Neptune</strong></td>
+              <td>49,244</td>
+              <td>17.1</td>
+              <td>16</td>
+              <td>165 years</td>
+              <td>-201</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Videos -->
+    <div class="video-section" aria-labelledby="ss-vids-title">
+      <section>
+        <span class="section-label" aria-hidden="true">Watch</span>
+        <h2 class="section-title" id="ss-vids-title">Solar System Videos</h2>
+        <p class="section-subtitle">Educational videos about our solar system, planets, and space exploration.</p>
+        <div class="glow-bar" aria-hidden="true"></div>
+        <div class="videos-grid">
+          <article class="video-card">
+            <div class="video-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/libKVRa01L8"
+                title="The Solar System Explained - Educational Video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                loading="lazy"
+                aria-label="YouTube video: The Solar System explained"
+              ></iframe>
+            </div>
+            <div class="video-info">
+              <h3>The Solar System Explained</h3>
+              <p>A complete guide to our solar system — from the Sun to the outer planets and everything in between.</p>
+            </div>
+          </article>
+          <article class="video-card">
+            <div class="video-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/Lsim6FYtXSw?si=ng8fTOR4idXGpLe5"
+                title="Sizes of Planets and Stars in the Universe"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                loading="lazy"
+                aria-label="YouTube video: Sizes of planets and stars compared"
+              ></iframe>
+            </div>
+            <div class="video-info">
+              <h3>Cosmic Size Comparison</h3>
+              <p>Mind-blowing comparison of planet, star, and galaxy sizes to help understand the true scale of the universe.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <!-- Beyond the Planets -->
+    <section aria-labelledby="beyond-title">
+      <span class="section-label" aria-hidden="true">More to Explore</span>
+      <h2 class="section-title" id="beyond-title">Beyond the Planets</h2>
+      <p class="section-subtitle">The solar system contains much more than just the eight planets.</p>
+      <div class="glow-bar" aria-hidden="true"></div>
+      <div class="facts-grid">
+        <div class="fact-card">
+          <span class="fact-icon" aria-hidden="true">🌑</span>
+          <h4>The Moon</h4>
+          <p>Earth's only natural satellite, 384,400 km away. Controls tides and stabilizes Earth's axial tilt.</p>
+        </div>
+        <div class="fact-card">
+          <span class="fact-icon" aria-hidden="true">☄️</span>
+          <h4>Asteroid Belt</h4>
+          <p>Located between Mars and Jupiter, containing millions of rocky objects, remnants from the solar system's formation.</p>
+        </div>
+        <div class="fact-card">
+          <span class="fact-icon" aria-hidden="true">🌠</span>
+          <h4>Kuiper Belt</h4>
+          <p>Beyond Neptune lies the Kuiper Belt — a vast region of icy bodies including dwarf planet Pluto.</p>
+        </div>
+        <div class="fact-card">
+          <span class="fact-icon" aria-hidden="true">💫</span>
+          <h4>Oort Cloud</h4>
+          <p>The most distant region of the solar system — a spherical shell of icy bodies that may extend 2 light-years from the Sun.</p>
+        </div>
+        <div class="fact-card">
+          <span class="fact-icon" aria-hidden="true">🌟</span>
+          <h4>Dwarf Planets</h4>
+          <p>Pluto, Eris, Ceres, Makemake, and Haumea — five officially recognized dwarf planets so far discovered.</p>
+        </div>
+        <div class="fact-card">
+          <span class="fact-icon" aria-hidden="true">🚀</span>
+          <h4>Space Probes</h4>
+          <p>Voyager 1, launched in 1977, is now in interstellar space — humanity's farthest-reaching exploration.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="footer-logo" aria-label="BigPlanetarium">🪐 BigPlanetarium</div>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="index.html">Home</a>
+      <a href="milkyway.html">Milky Way</a>
+      <a href="mars.html">Mars</a>
+      <a href="solar-system.html">Solar System</a>
+    </nav>
+    <div class="divider" aria-hidden="true"></div>
+    <p class="footer-copy">© 2026 BigPlanetarium — An Educational Space Science Platform. All content is for educational purposes.</p>
+  </footer>
+
+  <button class="scroll-top" aria-label="Scroll back to top" title="Scroll to top">↑</button>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

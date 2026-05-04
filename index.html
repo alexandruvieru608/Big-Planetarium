@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="BigPlanetarium — Explore the Milky Way galaxy, planets, and the wonders of our solar system through stunning visuals and interactive learning." />
+  <meta property="og:title" content="BigPlanetarium — Explore the Universe" />
+  <title>BigPlanetarium — Explore the Universe</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪐</text></svg>" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Hero floating planet decoration */
+    .hero-planet-deco {
+      position: absolute;
+      right: 8%; top: 50%; transform: translateY(-50%);
+      opacity: .4; pointer-events: none;
+    }
+    .hero-planet-deco .earth-wrapper {
+      width: 320px; height: 320px;
+      filter: blur(1px);
+    }
+    @media(max-width:1100px){ .hero-planet-deco { display: none; } }
+
+    /* Shooting star */
+    .shooting-star {
+      position: absolute; width: 150px; height: 1px;
+      background: linear-gradient(to right, transparent, white, transparent);
+      top: 20%; left: 10%;
+      animation: shoot 4s ease-in-out infinite;
+      opacity: 0;
+    }
+    .shooting-star:nth-child(2) { top: 55%; left: 60%; animation-delay: 2s; width: 100px; }
+    .shooting-star:nth-child(3) { top: 80%; left: 30%; animation-delay: 5s; width: 80px; }
+    @keyframes shoot {
+      0%   { transform: translateX(0) translateY(0) rotate(-25deg); opacity: 0; }
+      10%  { opacity: 1; }
+      40%  { transform: translateX(400px) translateY(160px) rotate(-25deg); opacity: 0; }
+      100% { transform: translateX(400px) translateY(160px) rotate(-25deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav role="navigation" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo" aria-label="BigPlanetarium Home">
+      <span class="logo-icon" aria-hidden="true">🪐</span> BigPlanetarium
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+      <li><a href="milkyway.html">Milky Way</a></li>
+      <li><a href="mars.html">Mars</a></li>
+      <li><a href="solar-system.html">Solar System</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <div class="hero" role="banner">
+      <!-- Shooting stars -->
+      <div class="shooting-star" aria-hidden="true"></div>
+      <div class="shooting-star" aria-hidden="true"></div>
+      <div class="shooting-star" aria-hidden="true"></div>
+
+      <!-- Floating Earth decoration -->
+      <div class="hero-planet-deco" aria-hidden="true">
+        <div class="earth-wrapper">
+          <div class="planet-3d-earth">
+            <div class="earth-surface"></div>
+            <div class="earth-clouds"></div>
+            <div class="earth-atmosphere"></div>
+            <div class="earth-highlight"></div>
+          </div>
+          <div class="earth-moon-orbit"><div class="earth-moon"></div></div>
+        </div>
+      </div>
+
+      <span class="hero-badge">Educational Space Platform</span>
+      <h1>Explore the<br /><span class="highlight">Wonders of Space</span></h1>
+      <p class="hero-subtitle">Journey through the Milky Way, discover distant planets, and unravel the mysteries of our solar system through stunning visuals and interactive learning.</p>
+      <div class="hero-buttons">
+        <a href="milkyway.html" class="btn btn-primary">Explore Milky Way 🌌</a>
+        <a href="solar-system.html" class="btn btn-outline">View Solar System</a>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <section aria-label="Universe statistics">
+      <div class="stats-bar" role="list">
+        <div class="stat-item" role="listitem">
+          <span class="stat-value" data-count="8" data-suffix="">8</span>
+          <span class="stat-label">Planets</span>
+        </div>
+        <div class="stat-item" role="listitem">
+          <span class="stat-value">200B+</span>
+          <span class="stat-label">Stars in Milky Way</span>
+        </div>
+        <div class="stat-item" role="listitem">
+          <span class="stat-value">100,000</span>
+          <span class="stat-label">Light-Years Wide</span>
+        </div>
+        <div class="stat-item" role="listitem">
+          <span class="stat-value">4.6B</span>
+          <span class="stat-label">Years Old (Solar System)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Explore Cards -->
+    <section aria-labelledby="explore-title">
+      <span class="section-label">Discover</span>
+      <h2 class="section-title" id="explore-title">Start Your Journey</h2>
+      <p class="section-subtitle">Navigate through the cosmos and learn about the incredible objects that make up our galaxy.</p>
+      <div class="glow-bar" aria-hidden="true"></div>
+      <div class="cards-grid">
+
+        <article class="card">
+          <div class="card-img-placeholder" style="background:linear-gradient(145deg,#050520,#14004a,#0a0060)">🌌</div>
+          <div class="card-body">
+            <span class="card-tag">Galaxy</span>
+            <h3>The Milky Way</h3>
+            <p>Our home galaxy — 100,000 light-years wide with 200 billion stars. Discover its spiral arms, central black hole, and structure.</p>
+            <a href="milkyway.html" class="card-link">Learn More →</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-img-placeholder" style="background:linear-gradient(145deg,#3a0800,#7a1808,#c04020)">🔴</div>
+          <div class="card-body">
+            <span class="card-tag">Planet</span>
+            <h3>Mars — The Red Planet</h3>
+            <p>A cold desert world with the tallest volcano and deepest canyon in the solar system. Could life have existed here?</p>
+            <a href="mars.html" class="card-link">Learn More →</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-img-placeholder" style="background:linear-gradient(145deg,#020215,#0a1030,#051020)">☀️</div>
+          <div class="card-body">
+            <span class="card-tag">Solar System</span>
+            <h3>Our Solar System</h3>
+            <p>Eight planets, dwarf planets, moons, asteroids, and comets — all orbiting our Sun. Compare planets and explore orbits.</p>
+            <a href="solar-system.html" class="card-link">Learn More →</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 3D Earth Section -->
+    <section aria-labelledby="earth-section-title" style="text-align:center">
+      <span class="section-label">Our Home</span>
+      <h2 class="section-title" id="earth-section-title">Planet Earth</h2>
+      <p class="section-subtitle">The only known planet with life — a pale blue dot in the vast cosmic ocean.</p>
+      <div class="glow-bar" aria-hidden="true"></div>
+      <div style="display:flex;justify-content:center;margin-bottom:2rem">
+        <div class="earth-wrapper" role="img" aria-label="Animated 3D Earth rotating in space">
+          <div class="planet-3d-earth">
+            <div class="earth-surface"></div>
+            <div class="earth-clouds"></div>
+            <div class="earth-atmosphere"></div>
+            <div class="earth-highlight"></div>
+          </div>
+          <div class="earth-moon-orbit"><div class="earth-moon"></div></div>
+        </div>
+      </div>
+      <div class="facts-grid" style="max-width:800px;margin:0 auto">
+        <div class="fact-card">
+          <span class="fact-icon" aria-hidden="true">💧</span>
+          <h4>Water World</h4>
+          <p>71% of Earth's surface is covered by liquid water — unique among all known planets.</p>
+        </div>
+        <div class="fact-card">
+          <span class="fact-icon" aria-hidden="true">🛡️</span>
+          <h4>Magnetic Shield</h4>
+          <p>Earth's magnetic field deflects solar wind, protecting life from harmful radiation.</p>
+        </div>
+        <div class="fact-card">
+          <span class="fact-icon" aria-hidden="true">🌕</span>
+          <h4>The Moon</h4>
+          <p>Our Moon stabilises Earth's axial tilt and drives the ocean tides that support marine life.</p>
+        </div>
+        <div class="fact-card">
+          <span class="fact-icon" aria-hidden="true">🌱</span>
+          <h4>Life</h4>
+          <p>Earth is home to 8.7 million known species — the only confirmed biosphere in the universe.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Videos -->
+    <div class="video-section" aria-labelledby="videos-title">
+      <section>
+        <span class="section-label">Watch &amp; Learn</span>
+        <h2 class="section-title" id="videos-title">Space in Motion</h2>
+        <p class="section-subtitle">Curated educational videos about the universe, galaxies, and planetary exploration.</p>
+        <div class="glow-bar" aria-hidden="true"></div>
+        <div class="videos-grid">
+          <article class="video-card">
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/0FH9cgRhQ-k" title="Journey Through the Milky Way"
+                allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture"
+                allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="video-info">
+              <h3>Journey Through the Milky Way</h3>
+              <p>Take a guided tour of our home galaxy and explore its incredible scale and structure.</p>
+            </div>
+          </article>
+          <article class="video-card">
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube.com/embed/libKVRa01L8" title="Our Solar System Overview"
+                allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture"
+                allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="video-info">
+              <h3>Our Solar System</h3>
+              <p>Explore all eight planets, the Sun, and other bodies that make up our solar system.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <!-- MCQ Quiz -->
+    <section aria-labelledby="quiz-title">
+      <span class="section-label">Interactive</span>
+      <h2 class="section-title" id="quiz-title">Space MCQ Quiz</h2>
+      <p class="section-subtitle">Test your knowledge of space, planets, and the cosmos with our interactive quiz!</p>
+      <div class="glow-bar" aria-hidden="true"></div>
+      <div class="mcq-outer">
+        <div class="mcq-header">
+          <span class="mcq-header-icon" aria-hidden="true">🚀</span>
+        </div>
+        <div class="mcq-wrapper" role="main" aria-label="Space MCQ Quiz">
+          <div id="quiz" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why BigPlanetarium -->
+    <section aria-labelledby="about-title">
+      <span class="section-label">About</span>
+      <h2 class="section-title" id="about-title">Why BigPlanetarium?</h2>
+      <p class="section-subtitle">We make space science accessible, engaging, and educational for everyone.</p>
+      <div class="glow-bar" aria-hidden="true"></div>
+      <div class="facts-grid">
+        <div class="fact-card"><span class="fact-icon">🎓</span><h4>Educational</h4><p>Accurate, peer-reviewed content written for all ages and knowledge levels.</p></div>
+        <div class="fact-card"><span class="fact-icon">♿</span><h4>Accessible</h4><p>Semantic HTML, ARIA labels, and strong colour contrast for all users.</p></div>
+        <div class="fact-card"><span class="fact-icon">📱</span><h4>Responsive</h4><p>Works beautifully on phones, tablets, and desktops — explore space anywhere.</p></div>
+        <div class="fact-card"><span class="fact-icon">🎬</span><h4>Rich Media</h4><p>Embedded educational videos, 3D animations, and interactive elements throughout.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="footer-logo">🪐 BigPlanetarium</div>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="index.html">Home</a>
+      <a href="milkyway.html">Milky Way</a>
+      <a href="mars.html">Mars</a>
+      <a href="solar-system.html">Solar System</a>
+    </nav>
+    <div class="divider" aria-hidden="true"></div>
+    <p class="footer-copy">© 2026 BigPlanetarium — An Educational Space Science Platform. All content is for educational purposes.</p>
+  </footer>
+
+  <button class="scroll-top" aria-label="Scroll back to top">↑</button>
+  <script src="js/script.js"></script>
+</body>
+</html>

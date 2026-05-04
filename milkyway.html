@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learn about the Milky Way galaxy — its structure, age, central black hole Sagittarius A*, spiral arms, and position in the universe." />
+  <meta property="og:title" content="The Milky Way Galaxy | BigPlanetarium" />
+  <title>The Milky Way Galaxy | BigPlanetarium</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪐</text></svg>" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .milkyway-hero-bg {
+      background: radial-gradient(ellipse at 50% 60%, rgba(60,0,150,0.25) 0%, transparent 65%),
+                  radial-gradient(ellipse at 20% 30%, rgba(0,80,180,0.15) 0%, transparent 50%);
+    }
+    .spiral-visual {
+      position: relative;
+      width: min(350px, 80vw);
+      height: min(350px, 80vw);
+      animation: spinSlow 40s linear infinite;
+    }
+    @keyframes spinSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .spiral-core {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #fff 0%, #ffe066 30%, #ffa040 60%, transparent 100%);
+      box-shadow: 0 0 60px #ffd060, 0 0 120px rgba(255,180,60,0.5);
+    }
+    .arm {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 160px;
+      height: 40px;
+      border-radius: 50%;
+      transform-origin: left center;
+      opacity: 0.6;
+    }
+    .arm-1 { background: radial-gradient(ellipse, rgba(200,180,255,0.8), transparent 80%); transform: rotate(0deg) translateY(-50%); }
+    .arm-2 { background: radial-gradient(ellipse, rgba(150,140,255,0.6), transparent 80%); transform: rotate(90deg) translateY(-50%); }
+    .arm-3 { background: radial-gradient(ellipse, rgba(180,160,255,0.7), transparent 80%); transform: rotate(180deg) translateY(-50%); }
+    .arm-4 { background: radial-gradient(ellipse, rgba(160,150,255,0.5), transparent 80%); transform: rotate(270deg) translateY(-50%); }
+    .galaxy-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(200,180,255,0.15);
+    }
+    .galaxy-ring:nth-child(2) { inset: 30px; border-color: rgba(200,180,255,0.1); }
+    .galaxy-ring:nth-child(3) { inset: 70px; border-color: rgba(200,180,255,0.08); }
+    .star-dot {
+      position: absolute;
+      border-radius: 50%;
+      background: white;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav role="navigation" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo" aria-label="BigPlanetarium Home">
+      <span aria-hidden="true">🪐</span> BigPlanetarium
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="milkyway.html" class="active" aria-current="page">Milky Way</a></li>
+      <li><a href="mars.html">Mars</a></li>
+      <li><a href="solar-system.html">Solar System</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <div class="planet-hero" style="padding-top:calc(var(--nav-height) + 3rem)">
+      <div class="planet-hero-content">
+        <span class="tag">Galaxy</span>
+        <h1>The Milky Way<br/><span style="color:var(--accent-gold)">Our Home Galaxy</span></h1>
+        <p>A barred spiral galaxy 100,000 light-years wide, containing over 200 billion stars — including our very own Sun, located about 26,000 light-years from the galactic center.</p>
+        <div class="hero-buttons" style="justify-content:flex-start">
+          <a href="#facts" class="btn btn-primary">Explore Facts</a>
+          <a href="#videos-mw" class="btn btn-outline">Watch Videos</a>
+        </div>
+      </div>
+      <div class="planet-visual" aria-label="Milky Way galaxy animation" role="img">
+        <div class="spiral-visual" aria-hidden="true">
+          <div class="galaxy-ring"></div>
+          <div class="galaxy-ring"></div>
+          <div class="galaxy-ring"></div>
+          <div class="arm arm-1"></div>
+          <div class="arm arm-2"></div>
+          <div class="arm arm-3"></div>
+          <div class="arm arm-4"></div>
+          <div class="spiral-core"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Facts -->
+    <section id="facts" aria-labelledby="facts-title">
+      <span class="section-label" aria-hidden="true">Key Data</span>
+      <h2 class="section-title" id="facts-title">Milky Way at a Glance</h2>
+      <div class="glow-bar" aria-hidden="true"></div>
+      <div class="stats-bar" role="list">
+        <div class="stat-item" role="listitem">
+          <span class="stat-value">100,000</span>
+          <span class="stat-label">Light-Years Diameter</span>
+        </div>
+        <div class="stat-item" role="listitem">
+          <span class="stat-value">200B+</span>
+          <span class="stat-label">Stars</span>
+        </div>
+        <div class="stat-item" role="listitem">
+          <span class="stat-value">13.6B</span>
+          <span class="stat-label">Years Old</span>
+        </div>
+        <div class="stat-item" role="listitem">
+          <span class="stat-value">4M☉</span>
+          <span class="stat-label">Central Black Hole Mass</span>
+        </div>
+        <div class="stat-item" role="listitem">
+          <span class="stat-value">2,000</span>
+          <span class="stat-label">Light-Years Thick</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tabbed Deep Dive -->
+    <section aria-labelledby="deepdive-title">
+      <span class="section-label" aria-hidden="true">Deep Dive</span>
+      <h2 class="section-title" id="deepdive-title">Exploring Our Galaxy</h2>
+      <div class="glow-bar" aria-hidden="true"></div>
+
+      <div class="tabs" role="tablist" aria-label="Milky Way information tabs">
+        <div class="tab-buttons">
+          <button class="tab-btn active" data-tab="tab-structure" role="tab" aria-selected="true" aria-controls="tab-structure">Structure</button>
+          <button class="tab-btn" data-tab="tab-blackhole" role="tab" aria-selected="false" aria-controls="tab-blackhole">Black Hole</button>
+          <button class="tab-btn" data-tab="tab-position" role="tab" aria-selected="false" aria-controls="tab-position">Our Position</button>
+          <button class="tab-btn" data-tab="tab-future" role="tab" aria-selected="false" aria-controls="tab-future">Future</button>
+        </div>
+
+        <div id="tab-structure" class="tab-panel active" role="tabpanel" aria-label="Milky Way structure">
+          <div class="info-panel">
+            <div>
+              <h3>Galactic Structure</h3>
+              <ul>
+                <li><span>Galaxy Type</span><span>Barred Spiral (SBbc)</span></li>
+                <li><span>Diameter</span><span>~100,000 light-years</span></li>
+                <li><span>Thickness (disk)</span><span>~2,000 light-years</span></li>
+                <li><span>Spiral Arms</span><span>4 major arms</span></li>
+                <li><span>Satellite Galaxies</span><span>50+ known</span></li>
+              </ul>
+            </div>
+            <div>
+              <h3>Components</h3>
+              <ul>
+                <li><span>Galactic Center</span><span>Sagittarius A*</span></li>
+                <li><span>Stellar Population</span><span>200–400 billion</span></li>
+                <li><span>Dark Matter Halo</span><span>Extends ~1 million ly</span></li>
+                <li><span>Star Formation Rate</span><span>~3 solar masses/year</span></li>
+                <li><span>Rotation Period</span><span>~225–250 million years</span></li>
+              </ul>
+            </div>
+          </div>
+          <p style="color:var(--text-muted);line-height:1.8">The Milky Way is a barred spiral galaxy with four major spiral arms: the Perseus Arm, Scutum-Centaurus Arm, Sagittarius Arm, and Norma Arm. Our solar system sits in a minor arm called the Orion Spur, between the Perseus and Sagittarius arms. The central bar of the galaxy is a dense region of stars about 27,000 light-years long, and at its very center lies the supermassive black hole Sagittarius A*.</p>
+        </div>
+
+        <div id="tab-blackhole" class="tab-panel" role="tabpanel" aria-label="Sagittarius A* information">
+          <div class="info-panel">
+            <div>
+              <h3>Sagittarius A*</h3>
+              <ul>
+                <li><span>Mass</span><span>~4 million solar masses</span></li>
+                <li><span>Distance from Earth</span><span>~26,000 light-years</span></li>
+                <li><span>Schwarzschild Radius</span><span>~12 million km</span></li>
+                <li><span>First Image</span><span>May 2022 (EHT)</span></li>
+              </ul>
+            </div>
+            <div>
+              <h3>Surrounding Region</h3>
+              <ul>
+                <li><span>Central Star Cluster</span><span>Nuclear Star Cluster</span></li>
+                <li><span>Gas Cloud</span><span>Active region</span></li>
+                <li><span>Radio Emission</span><span>Very compact source</span></li>
+                <li><span>Currently Active?</span><span>Relatively quiet</span></li>
+              </ul>
+            </div>
+          </div>
+          <p style="color:var(--text-muted);line-height:1.8">Sagittarius A* (Sgr A*) is the supermassive black hole at the heart of the Milky Way. In May 2022, the Event Horizon Telescope collaboration released the first image of it — a glowing ring of gas and dust surrounding the invisible black hole. Despite its enormous mass (4 million times the Sun), Sgr A* is currently in a relatively quiet state compared to active galactic nuclei in other galaxies.</p>
+        </div>
+
+        <div id="tab-position" class="tab-panel" role="tabpanel" aria-label="Earth's position in the Milky Way">
+          <div class="info-panel">
+            <div>
+              <h3>Earth's Location</h3>
+              <ul>
+                <li><span>Arm Location</span><span>Orion Spur</span></li>
+                <li><span>Distance from Center</span><span>~26,000 light-years</span></li>
+                <li><span>Galactic Latitude</span><span>Near the galactic plane</span></li>
+                <li><span>Orbital Speed</span><span>~828,000 km/h</span></li>
+              </ul>
+            </div>
+            <div>
+              <h3>Our Journey</h3>
+              <ul>
+                <li><span>Galactic Year</span><span>~225–250 million years</span></li>
+                <li><span>Orbits Completed</span><span>~20 (since Sun formed)</span></li>
+                <li><span>Local Group</span><span>Virgo Supercluster</span></li>
+                <li><span>Nearest Galaxy</span><span>Canis Major Dwarf (~25,000 ly)</span></li>
+              </ul>
+            </div>
+          </div>
+          <p style="color:var(--text-muted);line-height:1.8">Our solar system lies roughly 26,000 light-years from the galactic center, in a quiet region of the Orion Spur — a minor arm connecting the Perseus and Sagittarius Arms. The Sun orbits the galactic center at about 828,000 km/h, completing one orbit (a "galactic year") every 225–250 million years. Since the Sun formed 4.6 billion years ago, it has completed about 20 orbits around the Milky Way's core.</p>
+        </div>
+
+        <div id="tab-future" class="tab-panel" role="tabpanel" aria-label="Future of the Milky Way">
+          <div class="info-panel">
+            <div>
+              <h3>Upcoming Events</h3>
+              <ul>
+                <li><span>~2 billion years</span><span>Large Magellanic Cloud collision</span></li>
+                <li><span>~4–5 billion years</span><span>Andromeda collision begins</span></li>
+                <li><span>~7 billion years</span><span>Milky Way + Andromeda merge</span></li>
+              </ul>
+            </div>
+            <div>
+              <h3>Milkomeda</h3>
+              <ul>
+                <li><span>New Galaxy Name</span><span>"Milkomeda"</span></li>
+                <li><span>Resulting Shape</span><span>Elliptical galaxy</span></li>
+                <li><span>Star Collisions</span><span>Extremely unlikely</span></li>
+                <li><span>Our Sun</span><span>Will survive the merger</span></li>
+              </ul>
+            </div>
+          </div>
+          <p style="color:var(--text-muted);line-height:1.8">In about 4–5 billion years, the Milky Way and the Andromeda Galaxy will begin to collide and eventually merge into a single, large elliptical galaxy that astronomers have nicknamed "Milkomeda." Despite the dramatic scale of this event, individual stars are so widely spaced that actual stellar collisions are extremely unlikely. Our Sun should survive the merger, though it will likely be thrown into a different orbit within the new galaxy.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Videos -->
+    <div class="video-section" id="videos-mw" aria-labelledby="vids-mw-title">
+      <section>
+        <span class="section-label" aria-hidden="true">Watch</span>
+        <h2 class="section-title" id="vids-mw-title">Milky Way Videos</h2>
+        <p class="section-subtitle">Explore our galaxy through stunning video content from space agencies and astronomers.</p>
+        <div class="glow-bar" aria-hidden="true"></div>
+        <div class="videos-grid">
+          <article class="video-card">
+            <div class="video-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/sDuZiimfSQU?si=_-vFoPh4hLCxR5Mb"
+                title="The Milky Way Galaxy Explained - Documentary"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                loading="lazy"
+                aria-label="YouTube video: The Milky Way Galaxy Explained"
+              ></iframe>
+            </div>
+            <div class="video-info">
+              <h3>The Milky Way Galaxy Explained</h3>
+              <p>A comprehensive documentary exploring our galaxy's structure, history, and the science behind its discovery.</p>
+            </div>
+          </article>
+
+          <article class="video-card">
+            <div class="video-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/7c2aj1YOeBk?si=3vxFpzAwlDUjEnJB"
+                title="Sagittarius A* - The Milky Way's Black Hole"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                loading="lazy"
+                aria-label="YouTube video: Sagittarius A* the Milky Way's black hole"
+              ></iframe>
+            </div>
+            <div class="video-info">
+              <h3>Sagittarius A* — Our Central Black Hole</h3>
+              <p>Learn about the supermassive black hole at the center of our galaxy and the 2022 Event Horizon Telescope image.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <!-- Exploration Timeline -->
+    <section aria-labelledby="timeline-title">
+      <span class="section-label" aria-hidden="true">History</span>
+      <h2 class="section-title" id="timeline-title">History of Discovery</h2>
+      <div class="glow-bar" aria-hidden="true"></div>
+      <div class="timeline" role="list">
+        <div class="timeline-item" role="listitem">
+          <span class="year">1610</span>
+          <h4>Galileo's Telescope</h4>
+          <p>Galileo Galilei used his telescope to resolve the Milky Way into individual stars, disproving earlier beliefs that it was a cloud.</p>
+        </div>
+        <div class="timeline-item" role="listitem">
+          <span class="year">1785</span>
+          <h4>William Herschel's Map</h4>
+          <p>Herschel created the first attempt at a map of the Milky Way by counting stars in different directions, estimating it to be lens-shaped.</p>
+        </div>
+        <div class="timeline-item" role="listitem">
+          <span class="year">1920</span>
+          <h4>The Great Debate</h4>
+          <p>Astronomers Shapley and Curtis debated whether nebulae were inside our galaxy or separate "island universes." Curtis was right.</p>
+        </div>
+        <div class="timeline-item" role="listitem">
+          <span class="year">1958</span>
+          <h4>Spiral Structure Confirmed</h4>
+          <p>Radio astronomy revealed the spiral arm structure of the Milky Way, showing our galaxy's true barred spiral form.</p>
+        </div>
+        <div class="timeline-item" role="listitem">
+          <span class="year">2022</span>
+          <h4>First Image of Sagittarius A*</h4>
+          <p>The Event Horizon Telescope collaboration released the first direct image of the Milky Way's supermassive black hole.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="footer-logo" aria-label="BigPlanetarium">🪐 BigPlanetarium</div>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="index.html">Home</a>
+      <a href="milkyway.html">Milky Way</a>
+      <a href="mars.html">Mars</a>
+      <a href="solar-system.html">Solar System</a>
+    </nav>
+    <div class="divider" aria-hidden="true"></div>
+    <p class="footer-copy">© 2026 BigPlanetarium — An Educational Space Science Platform. All content is for educational purposes.</p>
+  </footer>
+
+  <button class="scroll-top" aria-label="Scroll back to top" title="Scroll to top">↑</button>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
